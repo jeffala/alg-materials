@@ -23,6 +23,12 @@ public struct Stack<Element> {
     public var isEmpty: Bool {
         peek() == nil
     }
+    
+    public init(_ elements: [Element]) {
+        storage = elements
+    }
+    
+
 }
 
 extension Stack: CustomDebugStringConvertible {
@@ -33,6 +39,12 @@ extension Stack: CustomDebugStringConvertible {
     \(storage.map { "\($0)"}.reversed().joined(separator: "\n"))
     ___________
     """
+    }
+}
+
+extension Stack: ExpressibleByArrayLiteral {
+    public init(arrayLiteral elements: Element...) {
+        storage = elements
     }
 }
 
